@@ -21,7 +21,7 @@ dwr_talks_links = [
     "https://youtube.com/watch?v=Nug2zLP8GpI",
 ]
 
-v_explainer_playlist = https://youtube.com/playlist?list=PL0eq1PLf6eUdm35v_840EGLXkVJDhxhcF
+v_explainer_playlist = "https://youtube.com/playlist?list=PL0eq1PLf6eUdm35v_840EGLXkVJDhxhcF"
 ```
 
 See [all.md](./all.md) for the full list of transcribed videos.
