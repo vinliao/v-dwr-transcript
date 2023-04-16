@@ -1,4 +1,6 @@
-These are all the transcribed YouTube videos about Farcaster by @v and @dwr, plus all the various scripts to transcribe and stitch them.
+# Farcaster Talks Transcript
+
+These are all the transcribed YouTube videos about Farcaster by [@v](https://warpcast.com/v) and [@dwr](https://warpcast.com/dwr), plus all the various scripts to transcribe and stitch them.
 
 I do not own any of these content; these content belong to their respective owners. Code is MIT-licensed.
 
