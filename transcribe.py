@@ -37,7 +37,7 @@ def save_transcription(transcription, output_path):
         print(f"Transcription saved to {output_path}")
 
 
-def find_audio_files(directory="."):
+def find_audio_files(directory="./audios"):
     audio_files = []
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -74,12 +74,18 @@ def split_audio(audio_path, max_duration_minutes=20):
 
 
 def main():
+    os.makedirs("transcript", exist_ok=True)
+
     audio_files = find_audio_files()
     for audio_path in audio_files:
         split_audio_paths = split_audio(audio_path)
 
         for split_audio_path in split_audio_paths:
-            output_path = os.path.splitext(split_audio_path)[0] + ".txt"
+            output_filename = (
+                os.path.basename(os.path.splitext(split_audio_path)[0]) + ".txt"
+            )
+            output_path = os.path.join("transcript", output_filename)
+
             if not os.path.exists(output_path):
                 transcribe_audio(split_audio_path, output_path)
                 print(f"Transcription saved to {output_path}")

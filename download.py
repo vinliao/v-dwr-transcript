@@ -19,5 +19,5 @@ links = [
 
 # Run a command without capturing its output
 for link in links:
-    command = f"yt-dlp -x --audio-format mp3 {link}"
+    command = f"yt-dlp -x --audio-format mp3 {link} --paths ./audios"
     subprocess.call(command, shell=True)
