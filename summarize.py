@@ -63,6 +63,23 @@ def process_text(text: str, chunk_size: int = 1000) -> List[str]:
     return processed_sections
 
 
-# TODO: implement summarize_chunk()
+def summarize_chunk(text: str):
+    prompt = "Please extract out the ideas and concepts, especially related to Farcaster, Ethereum, decentralized social media. Don't edit the text, just extract. Everything else should be left out. The result you give must be in first-person, and you should speak as if you're the explainer (the person explaining the ideas, not the interviewer). You should speak like, 'I think...' or just assert some fact about the topic at hand. Here's the text:"
+    result = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful summarizer."},
+            {"role": "user", "content": f"{prompt}\n\n{text}"},
+        ],
+        temperature=0,
+    )
 
-text_chunks = process_text(get_text("./all.md"), chunk_size=3000)
+    return result["choices"][0]["message"]["content"]
+
+
+text_chunks = process_text(get_text("./all.md"), chunk_size=4000)
+with open("summary.md", "a") as f:
+    for chunk in text_chunks:
+        summary = summarize_chunk(chunk)
+        print(summary)
+        f.write(summary + "\n")
